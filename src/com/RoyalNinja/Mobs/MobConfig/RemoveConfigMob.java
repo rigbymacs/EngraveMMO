@@ -1,6 +1,7 @@
 package com.RoyalNinja.Mobs.MobConfig;
 
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 
@@ -10,7 +11,7 @@ public class RemoveConfigMob implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
 	
-	@EventHandler
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onEntityDeath(EntityDeathEvent e) {
 		if (settings.getMobData().getString(e.getEntity().getUniqueId().toString()) != null) {
 			settings.getMobData().set(e.getEntity().getUniqueId().toString(), null);

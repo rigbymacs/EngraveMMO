@@ -1,7 +1,9 @@
 package com.RoyalNinja;
  
-import org.bukkit.Bukkit;   
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -11,10 +13,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.RoyalNinja.AntiBuild.Mobs.ChangeBlockEvent;
 import com.RoyalNinja.Cutscenes.Commands.CutsceneCommands;
 import com.RoyalNinja.Cutscenes.Listeners.SaveCutsceneLocations;
+import com.RoyalNinja.EngraveMMO.MobHandler;
 import com.RoyalNinja.EngraveMMO.MySQLUtil;
 import com.RoyalNinja.EngraveMMO.SettingsManager;
+import com.RoyalNinja.EngraveMMO.MobHandler.MobModifier;
+import com.RoyalNinja.EngraveMMO.MobHandler.MobRace;
 import com.RoyalNinja.Mobs.MobActionBarHealth.ShowMobHealth;
 import com.RoyalNinja.Mobs.MobConfig.RemoveConfigMob;
+import com.RoyalNinja.Mobs.MobDrops.MobItemDrops;
 import com.RoyalNinja.Mobs.MobRaceAbilities.AcolyteAbilities;
 import com.RoyalNinja.Mobs.MobRaceAbilities.AeresAbilities;
 import com.RoyalNinja.Mobs.MobRaceAbilities.AndeddoAbilities;
@@ -86,6 +92,7 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getPluginManager().registerEvents(new AcolyteAbilities(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new SphinxAbilities(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new ChangeBlockEvent(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new MobItemDrops(), this);
 
 
 		settings.setup(this);
@@ -103,8 +110,7 @@ public class Main extends JavaPlugin {
 		console.sendMessage(ChatColor.GREEN + "--------------------------------");
 		
 	}
-
-
+	
 	public void onDisable() {
 		
 		for(String key : settings.getMobData().getKeys(false)){

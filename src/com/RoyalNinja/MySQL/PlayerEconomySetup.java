@@ -9,6 +9,8 @@ import com.RoyalNinja.EngraveMMO.Economy;
 import com.RoyalNinja.EngraveMMO.MobHandler;
 import com.RoyalNinja.EngraveMMO.MobHandler.MobModifier;
 import com.RoyalNinja.EngraveMMO.MobHandler.MobRace;
+import com.RoyalNinja.EngraveMMO.ItemGenerator.WeaponGenerator;
+import com.RoyalNinja.EngraveMMO.ItemGenerator.WeaponGenerator.Rarity;
 
 public class PlayerEconomySetup implements Listener {
 	
@@ -17,12 +19,6 @@ public class PlayerEconomySetup implements Listener {
 		Player p = (Player) e.getPlayer();
 		
 		Economy econ = new Economy();
-		
-		MobHandler mh = new MobHandler();
-		
-		mh.spawnMonster(p.getLocation(), MobRace.SPHINX, MobModifier.BEASTLY, 100);
-		p.setHealthScale(20);
-		p.setFlying(true);
 		
 		if (!econ.economyDataContainsPlayer(p)) {
 			econ.setupPlayerEconomyData(p);

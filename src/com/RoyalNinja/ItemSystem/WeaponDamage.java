@@ -26,14 +26,7 @@ public class WeaponDamage implements Listener {
 				Double minDmg=0.0, maxDmg=0.0;
 				
 				if (!(weapon.hasItemMeta() && weapon.getItemMeta().hasLore())) return;
-				
-				for (String line : weapon.getItemMeta().getLore()) {
-					Bukkit.getServer().broadcastMessage(line);
-				}
-				
 					for (String line : weapon.getItemMeta().getLore()) {
-						Bukkit.getServer().broadcastMessage(line);
-
 						if (line.contains(ChatColor.GOLD + "DMG: ")) {
 					      String dmgString;
 					      
@@ -41,7 +34,7 @@ public class WeaponDamage implements Listener {
 				
 						  minDmg = Double.parseDouble(ChatColor.stripColor(dmgString.split("-")[0]));
 						  maxDmg = Double.parseDouble(ChatColor.stripColor(dmgString.split("-")[1]));
-						}else return;
+						}
 					}
 				Random r = new Random();
 				

@@ -16,6 +16,7 @@ import com.RoyalNinja.Cutscenes.Listeners.SaveCutsceneLocations;
 import com.RoyalNinja.EngraveMMO.MobHandler;
 import com.RoyalNinja.EngraveMMO.MySQLUtil;
 import com.RoyalNinja.EngraveMMO.SettingsManager;
+import com.RoyalNinja.LevelingSystem.ExpGainMobs;
 import com.RoyalNinja.EngraveMMO.MobHandler.MobModifier;
 import com.RoyalNinja.EngraveMMO.MobHandler.MobRace;
 import com.RoyalNinja.Mobs.MobActionBarHealth.ShowMobHealth;
@@ -35,6 +36,7 @@ import com.RoyalNinja.Mobs.MobTitleAbilities.GodlyAbilities;
 import com.RoyalNinja.Mobs.MobTitleAbilities.SilentAbilities;
 import com.RoyalNinja.Mobs.MobTitleAbilities.UnholyAbilities;
 import com.RoyalNinja.MySQL.PlayerEconomySetup;
+import com.RoyalNinja.MySQL.PlayerLevelSetup;
 public class Main extends JavaPlugin {
 	
 	SettingsManager settings = SettingsManager.getInstance();
@@ -93,6 +95,8 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getPluginManager().registerEvents(new SphinxAbilities(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new ChangeBlockEvent(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new MobItemDrops(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new PlayerLevelSetup(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new ExpGainMobs(), this);
 
 
 		settings.setup(this);

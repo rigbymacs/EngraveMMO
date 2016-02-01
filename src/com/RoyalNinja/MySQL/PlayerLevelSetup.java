@@ -9,21 +9,20 @@ import com.RoyalNinja.EngraveMMO.Economy;
 import com.RoyalNinja.EngraveMMO.MobHandler;
 import com.RoyalNinja.EngraveMMO.MobHandler.MobModifier;
 import com.RoyalNinja.EngraveMMO.MobHandler.MobRace;
+import com.RoyalNinja.EngraveMMO.ItemGenerator.ArmorGenerator;
+import com.RoyalNinja.EngraveMMO.ItemGenerator.WeaponGenerator.Rarity;
+import com.RoyalNinja.EngraveMMO.LevelingSystem.LevelingSystem;
 
-public class PlayerEconomySetup implements Listener {
+public class PlayerLevelSetup implements Listener {
 	
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		Player p = (Player) e.getPlayer();
 		
-		Economy econ = new Economy();
+		LevelingSystem ls = new LevelingSystem();
 		
-		MobHandler mh = new MobHandler();
-		
-		mh.spawnMonster(p.getLocation(), MobRace.SPHINX, MobModifier.SHIFTED, 100);
-		
-		if (!econ.economyDataContainsPlayer(p)) {
-			econ.setupPlayerEconomyData(p);
+		if (!ls.levelingDataContainsPlayer(p)) {
+			ls.setupPlayerLevelingData(p);
 		}else return;
 	}
 

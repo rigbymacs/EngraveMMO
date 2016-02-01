@@ -15,35 +15,40 @@ public class WeaponDamage implements Listener {
 	
 	@EventHandler
 	public void onEntityDamage(EntityDamageByEntityEvent e) {
+		
 		if (e.getDamager() instanceof Player) {
 			
 			Player p = (Player) e.getDamager();
 			
 			if (p.getItemInHand() != null) {
-				
-				ItemStack weapon = p.getInventory().getItemInHand();
+				ItemStack weapon = p.getItemInHand();
 				
 				Double minDmg=0.0, maxDmg=0.0;
 				
-				if (weapon.hasItemMeta() && weapon.getItemMeta().hasLore()) {
+				if (!(weapon.hasItemMeta() && weapon.getItemMeta().hasLore())) return;
+				
+				for (String line : weapon.getItemMeta().getLore()) {
+					Bukkit.getServer().broadcastMessage(line);
+				}
+				
 					for (String line : weapon.getItemMeta().getLore()) {
-						if (line.contains(ChatColor.GOLD + "DMG: ")) {
+						Bukkit.getServer().broadcastMessage(line);
 
+						if (line.contains(ChatColor.GOLD + "DMG: ")) {
 					      String dmgString;
 					      
 						  dmgString = line.replaceAll("DMG: ", "").replaceAll(" ", "");
 				
 						  minDmg = Double.parseDouble(ChatColor.stripColor(dmgString.split("-")[0]));
 						  maxDmg = Double.parseDouble(ChatColor.stripColor(dmgString.split("-")[1]));
-						}
+						}else return;
 					}
-				}else return;
-				
 				Random r = new Random();
 				
 				Integer dmg = r.nextInt(maxDmg.intValue() - minDmg.intValue()) + minDmg.intValue();
 				
 				e.setDamage(dmg);
+				Bukkit.getServer().broadcastMessage(dmg + "");
 			}
 			
 			

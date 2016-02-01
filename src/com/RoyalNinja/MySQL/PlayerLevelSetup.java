@@ -1,5 +1,6 @@
 package com.RoyalNinja.MySQL;
 
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -21,6 +22,10 @@ public class PlayerLevelSetup implements Listener {
 		
 		LevelingSystem ls = new LevelingSystem();
 		
+		MobHandler mh = new MobHandler();
+		
+		mh.spawnMonster(p.getLocation(), MobRace.GIANT, MobModifier.BEASTLY, 1);
+
 		if (!ls.levelingDataContainsPlayer(p)) {
 			ls.setupPlayerLevelingData(p);
 		}else return;

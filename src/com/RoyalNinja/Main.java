@@ -13,7 +13,9 @@ import com.RoyalNinja.Cutscenes.Commands.CutsceneCommands;
 import com.RoyalNinja.Cutscenes.Listeners.SaveCutsceneLocations;
 import com.RoyalNinja.EngraveMMO.MySQLUtil;
 import com.RoyalNinja.EngraveMMO.SettingsManager;
+import com.RoyalNinja.GUI.SpawnEnderDragon;
 import com.RoyalNinja.ItemSystem.ArmorHealthThread;
+import com.RoyalNinja.ItemSystem.SetPlayerHealthThread;
 import com.RoyalNinja.ItemSystem.WeaponDamage;
 import com.RoyalNinja.LevelingSystem.ExpGainMobs;
 import com.RoyalNinja.LevelingSystem.ItemLevelRequirements;
@@ -51,6 +53,8 @@ public class Main extends JavaPlugin {
 	public static int HopelessAbilityTimer;
 	public static int SphinxAbilityTimer;
 	public static int ArmorHealthTimer;
+	public static int SetPlayerHealthTimer;
+	public static int BossBarTimer;
 	
 	
 	
@@ -76,6 +80,10 @@ public class Main extends JavaPlugin {
 				new SphinxAbilities(), 100L, 100L);
 		ArmorHealthTimer = getServer().getScheduler().scheduleSyncRepeatingTask(this,
 				new ArmorHealthThread(), 1L, 1L);
+		SetPlayerHealthTimer = getServer().getScheduler().scheduleSyncRepeatingTask(this,
+				new SetPlayerHealthThread(), 1L, 1L);
+		BossBarTimer = getServer().getScheduler().scheduleSyncRepeatingTask(this,
+				new SpawnEnderDragon(), 1L, 1L);
 		
 		
 		plugin = this;

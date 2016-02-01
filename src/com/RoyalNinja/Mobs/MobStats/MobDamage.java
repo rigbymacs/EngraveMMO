@@ -110,7 +110,9 @@ public class MobDamage implements Listener {
 			Random r = new Random();
 			Integer random = r.nextInt(24) + 1;
 			
-			e.setDamage((MobDamageMult*(MobLevel/50))*random);
+			e.setDamage(MobDamageMult*MobLevel/50*random);
+
+			Bukkit.getServer().broadcastMessage(MobDamageMult*MobLevel/50*random + "");
 			
 		}
 	}

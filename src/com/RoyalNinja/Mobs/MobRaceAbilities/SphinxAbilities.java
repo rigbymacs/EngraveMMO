@@ -85,7 +85,7 @@ public class SphinxAbilities extends BukkitRunnable implements Listener {
 				
 				if (!(settings.getMobData().getString(e.getEntity().getUniqueId().toString() + ".Race").equals("Sphinx"))) return;
 				
-				final Integer mobLevel = settings.getMobData().getInt(e.getEntity().getUniqueId().toString() + ".Level");
+				Integer mobLevel = settings.getMobData().getInt(e.getEntity().getUniqueId().toString() + ".Level");
 				
 				Random r = new Random();
 				

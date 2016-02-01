@@ -18,7 +18,6 @@ public class ArmorHealthThread extends BukkitRunnable {
 			
 			Integer helmHP=0, chestHP=0, leggsHP=0, bootsHP=0;
 			
-			
 			if (p.getInventory().getHelmet() != null) {
 				if (p.getInventory().getHelmet().hasItemMeta() && p.getInventory().getHelmet().getItemMeta().hasLore()) {
 					for (String line : p.getInventory().getHelmet().getItemMeta().getLore()) {
@@ -59,8 +58,7 @@ public class ArmorHealthThread extends BukkitRunnable {
 				}
 			}else bootsHP=0;
 			
-			Integer totalHealth = helmHP+chestHP+leggsHP+bootsHP;
-			
+			Integer totalHealth = helmHP+chestHP+leggsHP+bootsHP+500;
 			
 			settings.getPlayerData().set(p.getUniqueId().toString() + ".Health", totalHealth);
 			settings.savePlayerData();

@@ -28,12 +28,6 @@ public class ExpGainMobs implements Listener {
 
 	public static HashMap<Hologram, Integer> life = new HashMap<Hologram, Integer>();
 	
-	@EventHandler
-	public void onEntityDamage(EntityDamageByEntityEvent e) {
-		LivingEntity ent = (LivingEntity) e.getEntity();
-		if (e.getDamager() instanceof Player) e.setDamage(ent.getMaxHealth()*2);
-	}
-	
 	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onEntityDeath(EntityDeathEvent e) {
@@ -67,7 +61,7 @@ public class ExpGainMobs implements Listener {
 			
 			LevelingSystem ls = new LevelingSystem();
 			
-			if (mobLevel - ls.getLevelFromPlayer(p) > 5) {
+			if (mobLevel - ls.getLevelFromPlayer(p) > 10) {
 				ActionBarUtil.sendActionBar(p, ChatColor.GOLD + "+" + ChatColor.RED + "0 " + ChatColor.GOLD + "EXP");
 				return;
 			}

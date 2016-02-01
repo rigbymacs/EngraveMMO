@@ -22,12 +22,8 @@ public class PlayerEconomySetup implements Listener {
 		ArmorGenerator ag = new ArmorGenerator();
 		WeaponGenerator wg = new WeaponGenerator();
 		
-		p.getInventory().addItem(ag.generateRandomArmor(100, MobRace.SPHINX, Rarity.Legendary));
-		p.getInventory().addItem(ag.generateRandomArmor(2, MobRace.SPHINX, Rarity.Legendary));
-		
-		p.getInventory().addItem(wg.generateRandomWeapon(100, MobRace.SPHINX, Rarity.Legendary));
-		p.getInventory().addItem(wg.generateRandomWeapon(2, MobRace.SPHINX, Rarity.Legendary));
-
+		p.getInventory().addItem(ag.generateRandomArmor(1, MobRace.SPHINX, Rarity.Legendary));
+		p.getInventory().addItem(wg.generateRandomWeapon(1, MobRace.SPHINX, Rarity.Legendary));
 		
 		if (!econ.economyDataContainsPlayer(p)) {
 			econ.setupPlayerEconomyData(p);

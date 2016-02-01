@@ -25,62 +25,85 @@ public class ShowMobHealth implements Listener {
 			
 			Player p = (Player) e.getDamager();
 			LivingEntity mob = (LivingEntity) e.getEntity();
-			Integer healthPercent = (int) ((mob.getHealth()/mob.getMaxHealth())*100);
+			Integer healthPercent = (int) ((Math.round(mob.getHealth())/mob.getMaxHealth())*100);
 			
 			if (!(mob instanceof Zombie) && !(mob instanceof Spider) && !(mob instanceof Endermite) && !(mob instanceof IronGolem) && !(mob instanceof Skeleton) && !(mob instanceof Witch)) return;
 
 			if (healthPercent > 90) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p, ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() + 
+				ChatColor.GRAY + "[" +
 				ChatColor.GREEN + "||||||||||||||||||||||||||||||"
 				+ ChatColor.GRAY + "]");
 			}
 			if (healthPercent > 80 && healthPercent <= 90) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p, ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() + ChatColor.GRAY + "[" +
 				ChatColor.GRAY + "||||||" + ChatColor.GREEN + "||||||||||||||||||||||||"
 				+ ChatColor.GRAY + "]");
 			}
 			if (healthPercent > 70 && healthPercent <= 80) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p, ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() + ChatColor.GRAY + "[" +
 				ChatColor.GRAY + "|||||||||" + ChatColor.GREEN + "|||||||||||||||||||||"
 				+ ChatColor.GRAY + "]");
 			}
 			if (healthPercent > 60 && healthPercent <= 70) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p, ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() + ChatColor.GRAY + "[" +
 				ChatColor.GRAY + "|||||||||||" + ChatColor.GREEN + "|||||||||||||||||||"
 				+ ChatColor.GRAY + "]");
 			}
 			if (healthPercent > 50 && healthPercent <= 60) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p, ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() + ChatColor.GRAY + "[" +
 				ChatColor.GRAY + "|||||||||||||" + ChatColor.GREEN + "|||||||||||||||||"
 				+ ChatColor.GRAY + "]");
 			}
 			if (healthPercent > 40 && healthPercent <= 50) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p, ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() + ChatColor.GRAY + "[" +
 				ChatColor.GRAY + "|||||||||||||||" + ChatColor.YELLOW + "|||||||||||||||"
 				+ ChatColor.GRAY + "]");
 			}
 			if (healthPercent > 30 && healthPercent <= 40) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p, ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() + ChatColor.GRAY + "[" +
 				ChatColor.GRAY + "|||||||||||||||||" + ChatColor.YELLOW + "|||||||||||||"
 				+ ChatColor.GRAY + "]");
 			}
 			if (healthPercent > 20 && healthPercent <= 30) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p, ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() + ChatColor.GRAY + "[" +
 				ChatColor.GRAY + "|||||||||||||||||||" + ChatColor.RED + "|||||||||||"
 				+ ChatColor.GRAY + "]");
 			}
 			if (healthPercent > 10 && healthPercent <= 20) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p,ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() +  ChatColor.GRAY + "[" +
 				ChatColor.GRAY + "|||||||||||||||||||||" + ChatColor.RED + "|||||||||"
 				+ ChatColor.GRAY + "]");
 			}
 			if (healthPercent <= 10 && healthPercent > 5) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p, ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() + ChatColor.GRAY + "[" +
 				ChatColor.GRAY + "||||||||||||||||||||||||" + ChatColor.DARK_RED + "||||||"
 				+ ChatColor.GRAY + "]");
 			}
 			if (healthPercent <= 5) {
-				ActionBarUtil.sendActionBar(p, ChatColor.GRAY + "[" +
+				ActionBarUtil.sendActionBar(p, ChatColor.RED.toString() + Math.round(mob.getHealth()) 
+				+ ChatColor.GRAY + "/" + 
+				ChatColor.RED + mob.getMaxHealth() + ChatColor.GRAY + "[" +
 				ChatColor.GRAY + "||||||||||||||||||||||||||||||"
 				+ ChatColor.GRAY + "]");
 			}

@@ -2,7 +2,6 @@ package com.RoyalNinja.Mobs.MobDrops;
 
 import java.util.Random;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -15,13 +14,14 @@ import org.bukkit.inventory.ItemStack;
 
 import com.RoyalNinja.EngraveMMO.MobHandler.MobRace;
 import com.RoyalNinja.EngraveMMO.SettingsManager;
+import com.RoyalNinja.EngraveMMO.ItemGenerator.ArmorGenerator;
 import com.RoyalNinja.EngraveMMO.ItemGenerator.WeaponGenerator;
 import com.RoyalNinja.EngraveMMO.ItemGenerator.WeaponGenerator.Rarity;
 
 public class MobItemDrops implements Listener {
 	
 	SettingsManager settings = SettingsManager.getInstance();
-	
+
 	@EventHandler(priority = EventPriority.LOWEST)
 	public void onMobDrop(EntityDeathEvent e) {
 		if (e.getEntity().getKiller() instanceof Player) {
@@ -34,6 +34,7 @@ public class MobItemDrops implements Listener {
 				e.getDrops().clear();
 				
 				WeaponGenerator wg = new WeaponGenerator();
+				ArmorGenerator ag = new ArmorGenerator();
 				
 				Integer mobLevel = settings.getMobData().getInt(ent.getUniqueId().toString() + ".Level");
 				MobRace mobRace = MobRace.ORC;
@@ -54,8 +55,10 @@ public class MobItemDrops implements Listener {
 				Integer dropChance = r.nextInt(100);
 				Integer dropChanceDecimal = r.nextInt(1000);
 				Integer rarityChance = r.nextInt(100);
+				Integer dropTypeRandom = r.nextInt(2) + 1;
 				
 				Rarity weaponRarity = Rarity.Common;
+				Rarity armorRarity = Rarity.Common;
 
 				if (rarityChance <= 100 && rarityChance > 20) weaponRarity = Rarity.Common;
 				if (rarityChance <= 20 && rarityChance > 10) weaponRarity = Rarity.Uncommon;
@@ -63,53 +66,108 @@ public class MobItemDrops implements Listener {
 				if (rarityChance <= 6 && rarityChance > 3) weaponRarity = Rarity.Heroic;
 				if (rarityChance <= 3 && rarityChance > 1) weaponRarity = Rarity.Legendary;
 				if (rarityChance == 1) weaponRarity = Rarity.Mythical;
+				
+				if (rarityChance <= 100 && rarityChance > 20) armorRarity = Rarity.Common;
+				if (rarityChance <= 20 && rarityChance > 10) armorRarity = Rarity.Uncommon;
+				if (rarityChance <= 10 && rarityChance > 6) armorRarity = Rarity.Epic;
+				if (rarityChance <= 6 && rarityChance > 3) armorRarity = Rarity.Heroic;
+				if (rarityChance <= 3 && rarityChance > 1) armorRarity = Rarity.Legendary;
+				if (rarityChance == 1) armorRarity = Rarity.Mythical;
 
 				if (mobRace.equals(MobRace.ORC)) {
-					if (dropChance <= 100 && dropChance > 90) {
-						ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
-						e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);
+					if (dropChance <= 100 && dropChance > 0) {
+						if (dropTypeRandom == 1) {
+							ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);	
+						}
+						if (dropTypeRandom == 2) {
+							ItemStack armor = ag.generateRandomArmor(mobLevel, mobRace, armorRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), armor);	
+						}
 					}
 				}
 				if (mobRace.equals(MobRace.ANDEDDO)) {
 					if (dropChance <= 90 && dropChance > 83) {
-						ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
-						e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);
+						if (dropTypeRandom == 1) {
+							ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);	
+						}
+						if (dropTypeRandom == 2) {
+							ItemStack armor = ag.generateRandomArmor(mobLevel, mobRace, armorRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), armor);	
+						}
 					}
 				}
 				if (mobRace.equals(MobRace.PIXIE)) {
 					if (dropChance <= 83 && dropChance > 78) {
-						ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
-						e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);
+						if (dropTypeRandom == 1) {
+							ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);	
+						}
+						if (dropTypeRandom == 2) {
+							ItemStack armor = ag.generateRandomArmor(mobLevel, mobRace, armorRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), armor);	
+						}
 					}
 				}
 				if (mobRace.equals(MobRace.GIANT)) {
 					if (dropChance <= 78 && dropChance > 75) {
-						ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
-						e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);
+						if (dropTypeRandom == 1) {
+							ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);	
+						}
+						if (dropTypeRandom == 2) {
+							ItemStack armor = ag.generateRandomArmor(mobLevel, mobRace, armorRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), armor);	
+						}
 					}
 				}
 				if (mobRace.equals(MobRace.AERES)) {
 					if (dropChance <= 75 && dropChance > 73) {
-						ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
-						e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);
+						if (dropTypeRandom == 1) {
+							ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);	
+						}
+						if (dropTypeRandom == 2) {
+							ItemStack armor = ag.generateRandomArmor(mobLevel, mobRace, armorRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), armor);	
+						}
 					}
 				}
 				if (mobRace.equals(MobRace.ACOLYTE)) {
 					if (dropChance <= 73 && dropChance > 72) {
-						ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
-						e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);
+						if (dropTypeRandom == 1) {
+							ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);	
+						}
+						if (dropTypeRandom == 2) {
+							ItemStack armor = ag.generateRandomArmor(mobLevel, mobRace, armorRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), armor);	
+						}
 					}
 				}
 				if (mobRace.equals(MobRace.HOPELESS)) {
 					if (dropChanceDecimal <= 1000 && dropChanceDecimal > 995) {
-						ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
-						e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);
+						if (dropTypeRandom == 1) {
+							ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);	
+						}
+						if (dropTypeRandom == 2) {
+							ItemStack armor = ag.generateRandomArmor(mobLevel, mobRace, armorRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), armor);	
+						}
 					}
 				}
 				if (mobRace.equals(MobRace.SPHINX)) {
 					if (dropChanceDecimal <= 995 && dropChanceDecimal > 993) {
-						ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
-						e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);
+						if (dropTypeRandom == 1) {
+							ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);	
+						}
+						if (dropTypeRandom == 2) {
+							ItemStack armor = ag.generateRandomArmor(mobLevel, mobRace, armorRarity);
+							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), armor);	
+						}
 					}
 				}
 				

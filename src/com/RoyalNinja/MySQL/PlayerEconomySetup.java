@@ -9,7 +9,7 @@ import com.RoyalNinja.EngraveMMO.Economy;
 import com.RoyalNinja.EngraveMMO.MobHandler;
 import com.RoyalNinja.EngraveMMO.MobHandler.MobModifier;
 import com.RoyalNinja.EngraveMMO.MobHandler.MobRace;
-import com.RoyalNinja.EngraveMMO.ItemGenerator.WeaponGenerator;
+import com.RoyalNinja.EngraveMMO.ItemGenerator.ArmorGenerator;
 import com.RoyalNinja.EngraveMMO.ItemGenerator.WeaponGenerator.Rarity;
 
 public class PlayerEconomySetup implements Listener {

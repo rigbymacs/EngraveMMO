@@ -6,8 +6,9 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 import com.RoyalNinja.EngraveMMO.Economy;
-import com.RoyalNinja.EngraveMMO.MobHandler;
-import com.RoyalNinja.EngraveMMO.MobHandler.MobModifier;
+import com.RoyalNinja.EngraveMMO.ItemGenerator.ArmorGenerator;
+import com.RoyalNinja.EngraveMMO.ItemGenerator.WeaponGenerator;
+import com.RoyalNinja.EngraveMMO.ItemGenerator.WeaponGenerator.Rarity;
 import com.RoyalNinja.EngraveMMO.MobHandler.MobRace;
 
 public class PlayerEconomySetup implements Listener {
@@ -18,9 +19,15 @@ public class PlayerEconomySetup implements Listener {
 		
 		Economy econ = new Economy();
 		
-		MobHandler mh = new MobHandler();
+		ArmorGenerator ag = new ArmorGenerator();
+		WeaponGenerator wg = new WeaponGenerator();
 		
-		mh.spawnMonster(p.getLocation(), MobRace.SPHINX, MobModifier.SHIFTED, 100);
+		p.getInventory().addItem(ag.generateRandomArmor(100, MobRace.SPHINX, Rarity.Legendary));
+		p.getInventory().addItem(ag.generateRandomArmor(2, MobRace.SPHINX, Rarity.Legendary));
+		
+		p.getInventory().addItem(wg.generateRandomWeapon(100, MobRace.SPHINX, Rarity.Legendary));
+		p.getInventory().addItem(wg.generateRandomWeapon(2, MobRace.SPHINX, Rarity.Legendary));
+
 		
 		if (!econ.economyDataContainsPlayer(p)) {
 			econ.setupPlayerEconomyData(p);

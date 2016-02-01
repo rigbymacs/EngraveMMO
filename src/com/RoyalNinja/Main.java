@@ -1,9 +1,7 @@
 package com.RoyalNinja;
  
-import org.bukkit.Bukkit;
+import org.bukkit.Bukkit; 
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -13,12 +11,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.RoyalNinja.AntiBuild.Mobs.ChangeBlockEvent;
 import com.RoyalNinja.Cutscenes.Commands.CutsceneCommands;
 import com.RoyalNinja.Cutscenes.Listeners.SaveCutsceneLocations;
-import com.RoyalNinja.EngraveMMO.MobHandler;
 import com.RoyalNinja.EngraveMMO.MySQLUtil;
 import com.RoyalNinja.EngraveMMO.SettingsManager;
+import com.RoyalNinja.ItemSystem.ArmorHealthThread;
+import com.RoyalNinja.ItemSystem.WeaponDamage;
 import com.RoyalNinja.LevelingSystem.ExpGainMobs;
-import com.RoyalNinja.EngraveMMO.MobHandler.MobModifier;
-import com.RoyalNinja.EngraveMMO.MobHandler.MobRace;
+import com.RoyalNinja.LevelingSystem.ItemLevelRequirements;
 import com.RoyalNinja.Mobs.MobActionBarHealth.ShowMobHealth;
 import com.RoyalNinja.Mobs.MobConfig.RemoveConfigMob;
 import com.RoyalNinja.Mobs.MobDrops.MobItemDrops;
@@ -52,6 +50,7 @@ public class Main extends JavaPlugin {
 	public static int AcolyteAbilityTimer;
 	public static int HopelessAbilityTimer;
 	public static int SphinxAbilityTimer;
+	public static int ArmorHealthTimer;
 	
 	
 	
@@ -75,6 +74,8 @@ public class Main extends JavaPlugin {
 				new HopelessAbilities(), 100L, 100L);
 		SphinxAbilityTimer = getServer().getScheduler().scheduleSyncRepeatingTask(this,
 				new SphinxAbilities(), 100L, 100L);
+		ArmorHealthTimer = getServer().getScheduler().scheduleSyncRepeatingTask(this,
+				new ArmorHealthThread(), 1L, 1L);
 		
 		
 		plugin = this;
@@ -97,6 +98,8 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getPluginManager().registerEvents(new MobItemDrops(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new PlayerLevelSetup(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new ExpGainMobs(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new ItemLevelRequirements(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new WeaponDamage(), this);
 
 
 		settings.setup(this);

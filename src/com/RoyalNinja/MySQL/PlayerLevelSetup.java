@@ -19,7 +19,7 @@ public class PlayerLevelSetup implements Listener {
 		
 		MobHandler mh = new MobHandler();
 		
-		mh.spawnMonster(p.getLocation(), MobRace.GIANT, MobModifier.BEASTLY, 1);
+		mh.spawnMonster(p.getLocation(), MobRace.ORC, MobModifier.BEASTLY, 1);
 
 		if (!ls.levelingDataContainsPlayer(p)) {
 			ls.setupPlayerLevelingData(p);

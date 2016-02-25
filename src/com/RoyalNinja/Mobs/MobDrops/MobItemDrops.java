@@ -75,7 +75,7 @@ public class MobItemDrops implements Listener {
 				if (rarityChance == 1) armorRarity = Rarity.Mythical;
 
 				if (mobRace.equals(MobRace.ORC)) {
-					if (dropChance <= 100 && dropChance > 0) {
+					if (dropChance <= 100 && dropChance > 91) {
 						if (dropTypeRandom == 1) {
 							ItemStack weapon = wg.generateRandomWeapon(mobLevel, mobRace, weaponRarity);
 							e.getEntity().getWorld().dropItemNaturally(e.getEntity().getLocation(), weapon);	

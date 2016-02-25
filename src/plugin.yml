@@ -7,3 +7,6 @@ commands:
      cutscene:
          usage: /<command>
          description: Cutscene creator.
+     dura:
+         usage: /<command>
+         description: Durability test.

@@ -18,7 +18,7 @@ public class SpawnEnderDragon extends BukkitRunnable {
 		for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 			try {
 				
-				BossBarHandler.sendSpawnPacket(p, ChatColor.GOLD + "Level: " + ChatColor.AQUA + ls.getLevelFromPlayer(p) + "  " + ChatColor.GREEN + p.getHealth() + ChatColor.GOLD + "/" + ChatColor.GREEN + p.getMaxHealth() + "  ", 400);
+				BossBarHandler.sendSpawnPacket(p, ChatColor.GOLD + "Level: " + ChatColor.AQUA + ls.getLevelFromPlayer(p) + "  " + ChatColor.GREEN + p.getHealth() + ChatColor.GOLD + "/" + ChatColor.GREEN + p.getMaxHealth() + "  " + ChatColor.GOLD + "EXP: " + ChatColor.AQUA + ls.getPercent(p) + "%", 400);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

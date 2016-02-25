@@ -2,6 +2,8 @@ package com.RoyalNinja;
  
 import org.bukkit.Bukkit; 
 import org.bukkit.ChatColor;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -13,6 +15,7 @@ import com.RoyalNinja.Cutscenes.Commands.CutsceneCommands;
 import com.RoyalNinja.Cutscenes.Listeners.SaveCutsceneLocations;
 import com.RoyalNinja.EngraveMMO.MySQLUtil;
 import com.RoyalNinja.EngraveMMO.SettingsManager;
+import com.RoyalNinja.EngraveMMO.ItemGenerator.DurabilityUtil;
 import com.RoyalNinja.GUI.SpawnEnderDragon;
 import com.RoyalNinja.ItemSystem.ArmorHealthThread;
 import com.RoyalNinja.ItemSystem.SetPlayerHealthThread;
@@ -126,6 +129,21 @@ public class Main extends JavaPlugin {
 		
 	}
 	
+	@Override
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		if (command.getName().equalsIgnoreCase("dura")) {
+
+			Player p = (Player) sender;
+			
+			DurabilityUtil du = new DurabilityUtil();
+			
+			du.setDurability(p.getItemInHand(), 1);
+			
+			return true;
+		}
+		return true;
+	}
+	
 	public void onDisable() {
 		
 		for(String key : settings.getMobData().getKeys(false)){
@@ -136,7 +154,6 @@ public class Main extends JavaPlugin {
 		for (Entity e : Bukkit.getServer().getWorlds().get(0).getEntities()) {
 			if (!(e instanceof Player)) {
 				e.remove();
-	
 			}
 		}
 	}

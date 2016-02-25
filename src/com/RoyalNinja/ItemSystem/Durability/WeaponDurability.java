@@ -1,5 +1,8 @@
 package com.RoyalNinja.ItemSystem.Durability;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,7 +21,7 @@ public class WeaponDurability implements Listener {
 			Player p = (Player) e.getDamager();
 			
 			if (p.getInventory().getItemInHand() != null) {
-				
+
 				ItemStack i = p.getInventory().getItemInHand();
 				
 				if (!(i.hasItemMeta() && i.getItemMeta().hasLore())) return;
@@ -31,7 +34,17 @@ public class WeaponDurability implements Listener {
 							
 							Integer currentDura = du.getCurrentDurability(i);
 							
-							du.setDurability(i, currentDura--);
+							if (currentDura == 0) {
+								p.sendMessage(ChatColor.RED + "Your item " + i.getItemMeta().getDisplayName() + ChatColor.RED + " has broken.");
+								p.getInventory().remove(i);
+								p.updateInventory();
+								p.getWorld().playSound(p.getLocation(), Sound.ITEM_BREAK, 1, 1);
+								return;
+							}
+							
+							du.setDurability(i, currentDura-1);
+							
+							p.updateInventory();
 							
 							return;
 							

@@ -1,6 +1,7 @@
 package com.RoyalNinja;
  
 import org.bukkit.Bukkit; 
+
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -20,6 +21,7 @@ import com.RoyalNinja.GUI.SpawnEnderDragon;
 import com.RoyalNinja.ItemSystem.ArmorHealthThread;
 import com.RoyalNinja.ItemSystem.SetPlayerHealthThread;
 import com.RoyalNinja.ItemSystem.WeaponDamage;
+import com.RoyalNinja.ItemSystem.Durability.WeaponDurability;
 import com.RoyalNinja.LevelingSystem.ExpGainMobs;
 import com.RoyalNinja.LevelingSystem.ItemLevelRequirements;
 import com.RoyalNinja.Mobs.MobActionBarHealth.ShowMobHealth;
@@ -40,6 +42,7 @@ import com.RoyalNinja.Mobs.MobTitleAbilities.SilentAbilities;
 import com.RoyalNinja.Mobs.MobTitleAbilities.UnholyAbilities;
 import com.RoyalNinja.MySQL.PlayerEconomySetup;
 import com.RoyalNinja.MySQL.PlayerLevelSetup;
+
 public class Main extends JavaPlugin {
 	
 	SettingsManager settings = SettingsManager.getInstance();
@@ -111,6 +114,7 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getPluginManager().registerEvents(new ExpGainMobs(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new ItemLevelRequirements(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new WeaponDamage(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new WeaponDurability(), this);
 
 
 		settings.setup(this);

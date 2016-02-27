@@ -21,6 +21,7 @@ import com.RoyalNinja.GUI.SpawnEnderDragon;
 import com.RoyalNinja.ItemSystem.ArmorHealthThread;
 import com.RoyalNinja.ItemSystem.SetPlayerHealthThread;
 import com.RoyalNinja.ItemSystem.WeaponDamage;
+import com.RoyalNinja.ItemSystem.Durability.ArmorDurability;
 import com.RoyalNinja.ItemSystem.Durability.WeaponDurability;
 import com.RoyalNinja.LevelingSystem.ExpGainMobs;
 import com.RoyalNinja.LevelingSystem.ItemLevelRequirements;
@@ -85,11 +86,11 @@ public class Main extends JavaPlugin {
 		SphinxAbilityTimer = getServer().getScheduler().scheduleSyncRepeatingTask(this,
 				new SphinxAbilities(), 100L, 100L);
 		ArmorHealthTimer = getServer().getScheduler().scheduleSyncRepeatingTask(this,
-				new ArmorHealthThread(), 1L, 1L);
+				new ArmorHealthThread(), 20L, 20L);
 		SetPlayerHealthTimer = getServer().getScheduler().scheduleSyncRepeatingTask(this,
-				new SetPlayerHealthThread(), 1L, 1L);
+				new SetPlayerHealthThread(), 20L, 20L);
 		BossBarTimer = getServer().getScheduler().scheduleSyncRepeatingTask(this,
-				new SpawnEnderDragon(), 1L, 1L);
+				new SpawnEnderDragon(), 20L, 20L);
 		
 		
 		plugin = this;
@@ -115,6 +116,7 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getPluginManager().registerEvents(new ItemLevelRequirements(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new WeaponDamage(), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new WeaponDurability(), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new ArmorDurability(), this);
 
 
 		settings.setup(this);

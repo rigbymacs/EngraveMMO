@@ -1,0 +1,12 @@
+name: EngraveMMO
+version: 1.0
+main: com.RoyalNinja.Main
+description: EngraveMMO Core plugin.
+depend: [EngraveMMOAPI]
+commands:
+     cutscene:
+         usage: /<command>
+         description: Cutscene creator.
+     dura:
+         usage: /<command>
+         description: Durability test.

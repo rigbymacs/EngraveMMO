@@ -66,7 +66,7 @@ public class Main extends JavaPlugin {
 	
 	
 	
-	@SuppressWarnings("deprecation")
+	@Override
 	public void onEnable() {
 		AeresAbilityTimer = getServer().getScheduler().scheduleAsyncRepeatingTask(this,
 				new AeresAbilities(), 100l, 100l);
